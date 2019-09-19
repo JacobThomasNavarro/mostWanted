@@ -41,7 +41,7 @@ function mainMenu(person, people){
       // TODO: get person's info
     break;
     case "family":
-    // TODO: get person's family
+    searchByFamily(person);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -117,3 +117,14 @@ function chars(input){
 }
 
 // prompt(question).trim();
+
+function searchByFamily(person){
+  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+  alert(personFamily);
+}
+
+function searchByDescendants(person){
+  let personDescendants = "Descendants include: " + person[0].parents + "\n";
+  personDescendants += "Descendants include: " + person[0].parents + "\n";
+  alert(personDescendants);
+}
