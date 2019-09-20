@@ -12,7 +12,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-  searchTrait(people);
+      searchTrait(people);
       break;
       default:
     app(people); // restart app
@@ -122,7 +122,7 @@ function findById(personId){
 
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
-  
+ 
   if (trait === "gender"){
     searchGender(people);
   }
@@ -155,6 +155,7 @@ function searchGender(people){
     else if(yesNo = "no"){
     }
 }
+
  function searchEyeColor(people){
   let searchResult = prompt("Enter eye color.");
   searchResult = searchResult.toLowerCase();
@@ -175,11 +176,32 @@ function searchGender(people){
     else if(yesNo = "no"){
     }
 }
-function searchWeight(people){
-  let searchResult = prompt("Enter Weight.");
-  searchResult = searchResult.toLowerCase();
+function searchDOB(people){
+  let searchResult = prompt("What is the Date of Birth?");
+  searchResult.toLowerCase();
   let results = people.filter(function(el){
-    if(el.weight === searchResult){
+    if(el.dob === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+
+    }
+}   
+function searchHeight(people){
+  let searchResult = prompt("What is the height in inches?");
+  searchResult = parseInt(searchResult, 10)
+  let results = people.filter(function(el){
+    if(el.height === searchResult){
       return true;
     }
     else{
@@ -194,7 +216,18 @@ function searchWeight(people){
     }
     else if(yesNo = "no"){
     }
-}   
+}
+// function searchWeight(people){
+//   let searchResult = prompt("Enter Weight.");
+//   searchResult = searchResult.toLowerCase();
+//   let results = people.filter(function(el){
+//     if(el.weight === searchResult){
+
+
+
+// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+//   alert(personFamily);
+
 
 
 
