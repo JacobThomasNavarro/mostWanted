@@ -122,12 +122,19 @@ function findById(personId){
 
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
- 
+  trait = trait.replace(" ", "")
+  trait = trait.lowerCase();
   if (trait === "gender"){
     searchGender(people);
   }
-  else if (trait === "eye color"){
+  else if (trait === "eyecolor"){
     searchEyeColor(people);
+  }
+  else if (trait === "height"){
+    searchHeight(people);
+  }
+  else if (trait === "dob"){
+    searchDOB(people);
   }
   else if (trait === "weight"){
     searchWeight(people);
@@ -174,6 +181,7 @@ function searchGender(people){
     else if(yesNo = "no"){
     }
 }
+
 function searchDOB(people){
   let searchResult = prompt("What is the Date of Birth?");
   searchResult.toLowerCase();
@@ -194,7 +202,8 @@ function searchDOB(people){
     else if(yesNo = "no"){
 
     }
-}   
+}
+
 function searchHeight(people){
   let searchResult = prompt("What is the height in inches?");
   searchResult = parseInt(searchResult, 10)
@@ -215,11 +224,29 @@ function searchHeight(people){
     else if(yesNo = "no"){
     }
 }
-// function searchWeight(people){
-//   let searchResult = prompt("Enter Weight.");
-//   searchResult = searchResult.toLowerCase();
-//   let results = people.filter(function(el){
-//     if(el.weight === searchResult){
+
+function searchWeight(people){
+  let searchResult = prompt("What is the weight in pounds?");
+  searchResult = parseInt(searchResult, 10)
+  let results = people.filter(function(el){
+    if(el.weight === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+    }
+}
+
+
 
 
 
