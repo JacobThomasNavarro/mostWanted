@@ -12,6 +12,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      searchTrait(people)
       // TODO: search by traits
       break;
       default:
@@ -133,10 +134,10 @@ function chars(input){
 
 function findById(personId){
   let personInfo = ("personId" === foundPerson === people.filter(fuction(person)))
+}
 
-
-function searchTrait(trait){
-  trait = prompt("Which trait would you like to look for?");
+function searchTrait(people){
+  let trait = prompt("Which trait would you like to look for?");
   trait = trait.split(" ");
     for(let i = 0; i < trait.length; i++){
       if(trait[i] === trait[0]){
@@ -149,14 +150,12 @@ function searchTrait(trait){
   trait = trait.join("");
 
 
-searchHeight(people);
+
 
   if (trait === "gender"){
     searchGender(people);
-
   }
 }
-
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResult.toLowerCase();
@@ -168,9 +167,19 @@ function searchGender(people){
       return false;
     }
   })
-
-  
-
+}
+ function searchEyeColor(people){
+  let searchResult = prompt("Do you want to search for male or female?");
+  searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.gender === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }) 
+}
 // filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
 //   alert(personFamily);
 
@@ -184,10 +193,9 @@ function searchGender(people){
 
 //}
 
-function searchByDescendants(person, people){
-  let personId = ("ID: " + person[0].id);
-  console.log(personId);
-  for(let i = 0; i < data.length; i++){
-  }
-}
-
+// function searchByDescendants(person, people){
+//   let personId = ("ID: " + person[0].id);
+//   console.log(personId);
+//   for(let i = 0; i < data.length; i++){
+//   }
+// }
