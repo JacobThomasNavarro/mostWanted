@@ -150,7 +150,6 @@ function searchTrait(people){
 
   if (trait === "gender"){
     searchGender(people);
-
   }
 }
 
@@ -164,9 +163,16 @@ function searchGender(people){
     else{
       return false;
     }
-  })
-  
-  return results
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo.toLowerCase;
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+      //TO DO enter display all people in array after result
+    }
 }
 
 function searchByFamily(person){
