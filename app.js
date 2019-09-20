@@ -132,9 +132,7 @@ function searchTrait(people){
   else if (trait === "weight"){
     searchWeight(people);
   }
-}
-
-  
+}  
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResults = searchResult.toLowerCase();
