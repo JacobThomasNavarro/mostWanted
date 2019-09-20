@@ -12,13 +12,12 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+      searchTrait(people);
       break;
-      default:
-    app(people); // restart app
+    default:
+      app(people); // restart app
       break;
   }
-  
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -136,8 +135,8 @@ function findById(personId){
 }
 
 
-function searchTrait(trait){
-  trait = prompt("Which trait would you like to look for?");
+function searchTrait(people){
+  let trait = prompt("Which trait would you like to look for?");
   trait = trait.split(" ");
     for(let i = 0; i < trait.length; i++){
       if(trait[i] === trait[0]){
@@ -149,7 +148,29 @@ function searchTrait(trait){
     }
   trait = trait.join("");
 
+
 searchHeight(people);
+
+  if (trait === "gender"){
+    searchGender(people);
+
+  }
+}
+
+function searchGender(people){
+  let searchResult = prompt("Do you want to search for male or female?");
+  searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.gender === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  
+  return results
+}
 
 function searchByFamily(person){
   let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
