@@ -117,3 +117,20 @@ function chars(input){
 }
 
 // prompt(question).trim();
+
+
+
+function searchTrait(trait){
+  trait = prompt("Which trait would you like to look for?")
+  trait = trait.split(" ")
+    for(let i = 0; i < trait.length; i++){
+      if(trait[i] === trait[0]){
+        trait[i].toLowerCase();
+      }
+      else if(trait[i] !== trait[0]){
+        trait[i] = trait[i][0].toUpperCase() + trait[i].substr(1);
+      }
+    }
+  trait = trait.join("")
+
+}
