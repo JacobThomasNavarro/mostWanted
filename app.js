@@ -170,7 +170,7 @@ function searchGender(people){
   });
   people = results;
   yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
-  yesNo.toLowerCase;
+  yesNo.toLowerCase();
     if(yesNo = "yes"){
       return searchTrait(people);
     }
