@@ -122,8 +122,8 @@ function findById(personId){
 
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
+  trait = trait.toLowerCase();
   trait = trait.replace(" ", "")
-  trait = trait.lowerCase();
   if (trait === "gender"){
     searchGender(people);
   }
@@ -139,12 +139,15 @@ function searchTrait(people){
   else if (trait === "weight"){
     searchWeight(people);
   }
+  else if (trait === "occupation"){
+    searchOccupation(people);
+  }
 }
 
   
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
-  searchResults = searchResult.toLowerCase();
+  searchResult = searchResult.toLowerCase();
   let results = people.filter(function(el){
     if(el.gender === searchResult){
       return true;
@@ -186,7 +189,7 @@ function searchGender(people){
 
 function searchDOB(people){
   let searchResult = prompt("What is the Date of Birth?");
-  searchResult.toLowerCase();
+  searchResult = searchResult.toLowerCase();
   let results = people.filter(function(el){
     if(el.dob === searchResult){
       return true;
@@ -248,6 +251,27 @@ function searchWeight(people){
     }
 }
 
+function searchOccupation(people){
+  let searchResult = prompt("What is their occupation?");
+  searchResult = searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.occupation === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+
+    }
+}
 
 
 
