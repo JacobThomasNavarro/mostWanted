@@ -12,12 +12,13 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchTrait(people);
+      // TODO: search by traits
       break;
-    default:
-      app(people); // restart app
+      default:
+    app(people); // restart app
       break;
   }
+  
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -132,11 +133,10 @@ function chars(input){
 
 function findById(personId){
   let personInfo = ("personId" === foundPerson === people.filter(fuction(person)))
-}
 
 
-function searchTrait(people){
-  let trait = prompt("Which trait would you like to look for?");
+function searchTrait(trait){
+  trait = prompt("Which trait would you like to look for?");
   trait = trait.split(" ");
     for(let i = 0; i < trait.length; i++){
       if(trait[i] === trait[0]){
@@ -167,15 +167,21 @@ function searchGender(people){
       return false;
     }
   })
+
   
-  return results
-}
 
-function searchByFamily(person){
-  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-  alert(personFamily);
+// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+//   alert(personFamily);
 
-}
+// }
+
+
+//function searchByDescendants(person){
+  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
+  //personDescendants += "Descendants include: " + person[0].parents + "\n";
+  //alert(personDescendants);
+
+//}
 
 function searchByDescendants(person, people){
   let personId = ("ID: " + person[0].id);
@@ -183,6 +189,7 @@ function searchByDescendants(person, people){
   for(let i = 0; i < data.length; i++){
   }
 }
+
 
 function searchWeight(people){
   let searchResult = prompt("weight");
@@ -196,3 +203,4 @@ function searchWeight(people){
   })
   return results;
 }
+
