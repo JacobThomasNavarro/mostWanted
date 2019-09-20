@@ -14,10 +14,11 @@ function app(people){
     case 'no':
       searchTrait(people);
       break;
-    default:
-      app(people); // restart app
+      default:
+    app(people); // restart app
       break;
   }
+  
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -43,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person[0]);
     break;
     case "descendants":
-    // TODO: get person's descendants
+    searchByDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -151,6 +152,9 @@ function searchTrait(people){
   if (trait === "gender"){
     searchGender(people);
   }
+  else if(trait === "weight"){
+    searchWeight(people);
+  }
 }
 
 function searchGender(people){
@@ -175,15 +179,37 @@ function searchGender(people){
     }
 }
 
-function searchByFamily(person){
-  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-  alert(personFamily);
 
+// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+//   alert(personFamily);
+
+// }
+
+
+//function searchByDescendants(person){
+  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
+  //personDescendants += "Descendants include: " + person[0].parents + "\n";
+  //alert(personDescendants);
+
+//}
+
+function searchByDescendants(person, people){
+  let personId = ("ID: " + person[0].id);
+  console.log(personId);
+  for(let i = 0; i < data.length; i++){
+  }
 }
 
-function searchByDescendants(person){
-  let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  personDescendants += "Descendants include: " + person[0].parents + "\n";
-  alert(personDescendants);
 
+function searchWeight(people){
+  let searchResult = prompt("weight");
+  let results = people.filter(function(el){
+    if(el.weight == searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return results;
 }
