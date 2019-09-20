@@ -122,15 +122,19 @@ function findById(personId){
 
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
- 
+  trait = trait.replace(" ", "")
+  trait = trait.lowerCase();
   if (trait === "gender"){
     searchGender(people);
   }
-  else if (trait === "eye color"){
+  else if (trait === "eyecolor"){
     searchEyeColor(people);
   }
-  else if (trait === "weight"){
-    searchWeight(people);
+  else if (trait === "height"){
+    searchHeight(people);
+  }
+  else if (trait === "dob"){
+    searchDOB(people);
   }
 }
 
