@@ -118,8 +118,6 @@ function chars(input){
 
 // prompt(question).trim();
 
-<<<<<<< HEAD
-
 
 function searchTrait(trait){
   trait = prompt("Which trait would you like to look for?")
@@ -133,8 +131,38 @@ function searchTrait(trait){
       }
     }
   trait = trait.join("")
+  if(trait === person[0].firstName){
+    alert("This is " + person[0]  + "first name: " + person[0].firstName);
+  }
+  else if(trait === person[0].lastName){
+    alert("This is " + person[0]  + "last name: " + person[0].lastName);
+  }
+  else if(trait === person[0].gender){
+    alert("This is " + person[0]  + "gender: " + person[0].gender);
+  }
+  else if(trait === person[0].dob){
+    alert("This is " + person[0]  + "dat of birth: " + person[0].dob)
+  }
+  else if(trait === person[0].height){
+    alert("This is " + person[0]  + "height: " + person[0].height)
+  }
+  else if(trait === person[0].weight){
+    alert("This is " + person[0]  + "weight: " + person[0].weight)
+  }
+  else if(trait === person[0].eyeColor){
+    alert("This is " + person[0] + "eye color: " + person[0].eyeColor)
+  }
+  else if(trait === person[0].occupation){
+    alert("This is " + person[0] + "occupation: " + person[0].occupation)
+  }
+  else if(trait === person[0].parents){
+    alert("This is " + person[0] + "parents: " + person[0].parents)
+  }
+  else if(trait === person[0].currentSpouse){
+    alert("This is " + person[0] + "current spouse: " + person[0].currentSpouse)
+  }
+}
 
-=======
 function searchByFamily(person){
   let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
   alert(personFamily);
@@ -144,5 +172,5 @@ function searchByDescendants(person){
   let personDescendants = "Descendants include: " + person[0].parents + "\n";
   personDescendants += "Descendants include: " + person[0].parents + "\n";
   alert(personDescendants);
->>>>>>> 988875c862fb19eac8cf31d5c559b02ce9189fc7
+
 }
