@@ -12,8 +12,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchTrait(people)
-      // TODO: search by traits
+  searchTrait(people);
       break;
       default:
     app(people); // restart app
@@ -149,9 +148,6 @@ function searchTrait(people){
     }
   trait = trait.join("");
 
-
-
-
   if (trait === "gender"){
     searchGender(people);
   }
@@ -166,7 +162,16 @@ function searchGender(people){
     else{
       return false;
     }
-  })
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+      //TO DO enter display all people in array after result
+    }
 }
  function searchEyeColor(people){
   let searchResult = prompt("Do you want to search for male or female?");
@@ -178,8 +183,43 @@ function searchGender(people){
     else{
       return false;
     }
-  }) 
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+      //TO DO enter display all people in array after result
+    }
 }
+// function searchWeight(people){
+//   let searchResult = prompt("weight");
+//   let results = people.filter(function(el){
+//     if(el.weight == searchResult){
+//       return true;
+//     }
+//     else{
+//       return false;
+//     }
+//   })
+//   return results;
+//   }
+// });
+// people = results;
+//   yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+//   yesNo.toLowerCase();
+//     if(yesNo = "yes"){
+//       return searchTrait(people);
+//     }
+//     else if(yesNo = "no"){
+//       //TO DO enter display all people in array after result
+//     }
+// }
+
+
+
 // filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
 //   alert(personFamily);
 
@@ -193,9 +233,15 @@ function searchGender(people){
 
 //}
 
+
 // function searchByDescendants(person, people){
 //   let personId = ("ID: " + person[0].id);
 //   console.log(personId);
 //   for(let i = 0; i < data.length; i++){
 //   }
 // }
+
+
+
+
+
