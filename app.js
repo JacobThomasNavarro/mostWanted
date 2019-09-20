@@ -151,7 +151,10 @@ function searchTrait(people){
   if (trait === "gender"){
     searchGender(people);
   }
+  else if (trait === "dob")
+    searchDOB(people);
 }
+
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResult.toLowerCase();
@@ -173,6 +176,7 @@ function searchGender(people){
       //TO DO enter display all people in array after result
     }
 }
+
  function searchEyeColor(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResult.toLowerCase();
@@ -194,6 +198,29 @@ function searchGender(people){
       //TO DO enter display all people in array after result
     }
 }
+
+function searchDOB(people){
+  let searchResult = prompt("What is the Date of Birth?");
+  searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.dob === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+      //TO DO enter display all people in array after result
+    }
+}
+
 // function searchWeight(people){
 //   let searchResult = prompt("weight");
 //   let results = people.filter(function(el){
