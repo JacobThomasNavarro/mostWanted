@@ -144,7 +144,6 @@ function searchTrait(people){
   }
 }
 
-  
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResult = searchResult.toLowerCase();
