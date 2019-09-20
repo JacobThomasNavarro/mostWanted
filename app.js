@@ -137,27 +137,25 @@ function findById(personId){
 
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
-  trait = trait.split(" ");
-    for(let i = 0; i < trait.length; i++){
-      if(trait[i] === trait[0]){
-        trait[i].toLowerCase();
-      }
-      else if(trait[i] !== trait[0]){
-        trait[i] = trait[i][0].toUpperCase() + trait[i].substr(1);
-      }
-    }
-  trait = trait.join("");
-
+  trait = trait.toLowerCase();
+  trait = trait.replace(" ", "");
   if (trait === "gender"){
     searchGender(people);
   }
-  else if (trait === "dob")
+  else if (trait === "dob"){
     searchDOB(people);
+  }
+  else if (trait === "height"){
+    searchHeight(people);
+  }
+  else if (trait === "eyecolor"){
+
+  }
 }
 
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
-  searchResult.toLowerCase();
+  searchResult = searchResult.toLowerCase();
   let results = people.filter(function(el){
     if(el.gender === searchResult){
       return true;
@@ -168,7 +166,7 @@ function searchGender(people){
   });
   people = results;
   yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
-  yesNo.toLowerCase();
+  yesNo = yesNo.toLowerCase();
     if(yesNo = "yes"){
       return searchTrait(people);
     }
@@ -190,7 +188,7 @@ function searchGender(people){
   });
   people = results;
   yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
-  yesNo.toLowerCase();
+  yesNo = yesNo.toLowerCase();
     if(yesNo = "yes"){
       return searchTrait(people);
     }
@@ -212,7 +210,29 @@ function searchDOB(people){
   });
   people = results;
   yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
-  yesNo.toLowerCase();
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+      //TO DO enter display all people in array after result
+    }
+}
+
+function searchHeight(people){
+  let searchResult = prompt("What is the height in inches?");
+  searchResult = parseInt(searchResult, 10)
+  let results = people.filter(function(el){
+    if(el.height === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
     if(yesNo = "yes"){
       return searchTrait(people);
     }
