@@ -147,42 +147,12 @@ function searchTrait(trait){
       }
     }
   trait = trait.join("");
-  if(trait === person[0].firstName){
-    return alert("This is " + person[0]  + "first name: " + person[0].firstName);
-  }
-  else if(trait === person[0].lastName){
-    return alert("This is " + person[0]  + "last name: " + person[0].lastName);
-  }
-  else if(trait === person[0].gender){
-    return alert("This is " + person[0]  + "gender: " + person[0].gender);
-  }
-  else if(trait === person[0].dob){
-    return alert("This is " + person[0]  + "dat of birth: " + person[0].dob);
-  }
-  else if(trait === person[0].height){
-    return alert("This is " + person[0]  + "height: " + person[0].height);
-  }
-  else if(trait === person[0].weight){
-    return alert("This is " + person[0]  + "weight: " + person[0].weight);
-  }
-  else if(trait === person[0].eyeColor){
-    return alert("This is " + person[0] + "eye color: " + person[0].eyeColor);
-  }
-  else if(trait === person[0].occupation){
-    return alert("This is " + person[0] + "occupation: " + person[0].occupation);
-  }
-  else if(trait === person[0].parents){
-    return alert("This is " + person[0] + "parents: " + person[0].parents);
-  }
-  else if(trait === person[0].currentSpouse){
-    return alert("This is " + person[0] + "current spouse: " + person[0].currentSpouse);
-  }
-}
+  
 
-//  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-  // alert(personFamily);
+// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+//   alert(personFamily);
 
-}
+// }
 
 //function searchByDescendants(person){
   //let personDescendants = "Descendants include: " + person[0].parents + "\n";
