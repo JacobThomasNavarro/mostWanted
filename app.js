@@ -179,15 +179,14 @@ function searchTrait(trait){
   }
 }
 
-function searchByFamily(person){
-  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-  alert(personFamily);
+//  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+  // alert(personFamily);
 
 }
 
-function searchByDescendants(person){
-  let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  personDescendants += "Descendants include: " + person[0].parents + "\n";
-  alert(personDescendants);
+//function searchByDescendants(person){
+  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
+  //personDescendants += "Descendants include: " + person[0].parents + "\n";
+  //alert(personDescendants);
 
-}
+//}
