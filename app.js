@@ -152,9 +152,6 @@ function searchTrait(people){
   if (trait === "gender"){
     searchGender(people);
   }
-  else if(trait === "weight"){
-    searchWeight(people);
-  }
 }
 
 function searchGender(people){
