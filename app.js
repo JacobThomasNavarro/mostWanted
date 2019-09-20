@@ -148,13 +148,12 @@ function searchTrait(people){
     }
   trait = trait.join("");
 
-
-searchHeight(people);
-
   if (trait === "gender"){
     searchGender(people);
-
-  }
+}
+  else if(trait === "weight"){
+    searchWeight(people);
+}
 }
 
 function searchGender(people){
@@ -183,4 +182,17 @@ function searchByDescendants(person, people){
   console.log(personId);
   for(let i = 0; i < data.length; i++){
   }
+}
+
+function searchWeight(people){
+  let searchResult = prompt("weight");
+  let results = people.filter(function(el){
+    if(el.weight == searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return results;
 }
