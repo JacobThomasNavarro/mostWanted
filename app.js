@@ -44,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person);
     break;
     case "descendants":
-    // TODO: get person's descendants
+    searchByDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -123,8 +123,10 @@ function searchByFamily(person){
   alert(personFamily);
 }
 
-function searchByDescendants(person){
-  let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  personDescendants += "Descendants include: " + person[0].parents + "\n";
+function searchByDescendants(person, people){
+  let personId = ("ID: " + person[0].id);
+  console.log(personId);
+  for(let i = 0; i < data.length; i++){
   alert(personDescendants);
+}
 }
