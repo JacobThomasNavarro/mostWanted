@@ -41,7 +41,7 @@ function mainMenu(person, people){
       // TODO: get person's info
     break;
     case "family":
-    searchByFamily(person);
+    searchByFamily(person[0]);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -118,9 +118,20 @@ function chars(input){
 
 // prompt(question).trim();
 
-function searchByFamily(person){
-  let personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-  alert(personFamily);
+// function searchByFamily(person){
+//   let personFamily = "Family members include: " + person.currentSpouse + "\n" + person.parents +"\n";
+//   alert(personFamily)
+//}
+// function searchByName(people){
+//   let firstName = promptFor("What is the person's first name?", chars);
+//   let lastName = promptFor("What is the person's last name?", chars);
+//   let person = [];
+
+//   let foundPerson = people.filter(function(person){
+//     if(person.id === personId 
+
+function findById(personId){
+  let personInfo = ("personId" === foundPerson === people.filter(fuction(person)))
 }
 
 function searchByDescendants(person){
