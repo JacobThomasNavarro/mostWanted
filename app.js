@@ -44,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person[0]);
     break;
     case "descendants":
-    // TODO: get person's descendants
+    searchByDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -147,6 +147,28 @@ function searchTrait(trait){
       }
     }
   trait = trait.join("");
+
+
+searchHeight(people);
+
+  if (trait === "gender"){
+    searchGender(people);
+
+  }
+}
+
+function searchGender(people){
+  let searchResult = prompt("Do you want to search for male or female?");
+  searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.gender === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+
   
 
 // filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
@@ -154,9 +176,18 @@ function searchTrait(trait){
 
 // }
 
+
 //function searchByDescendants(person){
   //let personDescendants = "Descendants include: " + person[0].parents + "\n";
   //personDescendants += "Descendants include: " + person[0].parents + "\n";
   //alert(personDescendants);
 
 //}
+
+function searchByDescendants(person, people){
+  let personId = ("ID: " + person[0].id);
+  console.log(personId);
+  for(let i = 0; i < data.length; i++){
+  }
+}
+
