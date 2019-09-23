@@ -277,9 +277,13 @@ function searchOccupation(people){
 
 
 function findFamily(person, people){
-  let spouseCheck = person[0].currentSpouse
-  if(spouseCheck != null || spouseCheck.length != 0){
+  let spouseCheck = person[0].currentSpouse;
+  let parentsCheck = person[0].parents;
+  if(spouseCheck != null && spouseCheck.length != 0){
     findSpouse(person, people);
+  }
+  else if(parents == null || parentsCheck.length != 0){
+    findParents(person, people);
   }
 }
 
@@ -298,63 +302,21 @@ function findSpouse(person, people){
   return findFamily(person, people);
 }
 
-
-  function getDescedantsTwo (people, person, descendants =[])
-  people.map(function(el));
-  if (el.parents[0] == personId || el.parents [1] == personId)
-    descendants.push(el);
-    getDescendants(people, el, descendants);
-
-// function getDescendants(people, person)
-//   let descendants = people.filter(function(el));
-//     if (el.parents[0] == personId || el.parents [1] == personId)
-//       getDescendants(people,el);
-
-
-// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-//   alert(personFamily);
-
-
-
-
-
-//function searchByDescendants(person){
-  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  //personDescendants += "Descendants include: " + person[0].parents + "\n";
-  //alert(personDescendants);
-
-//}
-
-
-// prompt(question).trim();
-
-
-// function searchByName(people){
-//   let firstName = promptFor("What is the person's first name?", chars);
-//   let lastName = promptFor("What is the person's last name?", chars);
-//   let person = [];
-
-//   let foundPerson = people.filter(function(person){
-//     if(person.id === personId 
-
-  // let foundDescendants = people.filter(function(person){
-  //   if(person.id === people.id){
-  //     return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // })
-  // // TODO: find the person using the name they entered
-  // return foundPerson;
-
-
-
-function getDescendants(people, person, descendants = []){
-  people.filter(function(el));
-  if(el.parent[0] == person.id || el.parents[1] == person.id)
-    descendants.push(el);
-
-  getDescendants(people, el, descendants);
-
+function findParents(person, people){
+  let parents = person[0].parents;
+  for(i = 0; i < parents.length; i++){
+    let results = people.filter(function(el){
+      if(parents[i] === el.id){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    parents[i] = results[0].firstName + " " + results[0].lastName;
+  }
+  person[0].parents = parents;
+  return findFamily(person, people);
 }
+
+
