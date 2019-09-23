@@ -12,7 +12,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+      searchTrait(people);
       break;
       default:
     app(people); // restart app
@@ -116,6 +116,187 @@ function chars(input){
   return true; // default validation only
 }
 
+function findById(personId){
+  let personInfo = ("personId" === foundPerson === people.filter(fuction(person)));
+}
+
+function searchTrait(people){
+  let trait = prompt("Which trait would you like to look for?");
+  trait = trait.toLowerCase();
+  trait = trait.replace(" ", "")
+  if (trait === "gender"){
+    searchGender(people);
+  }
+  else if (trait === "eyecolor"){
+    searchEyeColor(people);
+  }
+  else if (trait === "height"){
+    searchHeight(people);
+  }
+  else if (trait === "dob"){
+    searchDOB(people);
+  }
+  else if (trait === "weight"){
+    searchWeight(people);
+  }
+  else if (trait === "occupation"){
+    searchOccupation(people);
+  }
+}
+
+function searchGender(people){
+  let searchResult = prompt("Do you want to search for male or female?");
+  searchResult = searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.gender === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+    }
+}
+
+ function searchEyeColor(people){
+  let searchResult = prompt("Enter eye color.");
+  searchResult = searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.eyeColor === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+    }
+}
+
+function searchDOB(people){
+  let searchResult = prompt("What is the Date of Birth?");
+  searchResult = searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.dob === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+
+    }
+}
+
+function searchHeight(people){
+  let searchResult = prompt("What is the height in inches?");
+  searchResult = parseInt(searchResult, 10)
+  let results = people.filter(function(el){
+    if(el.height === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+    }
+}
+
+function searchWeight(people){
+  let searchResult = prompt("What is the weight in pounds?");
+  searchResult = parseInt(searchResult, 10)
+  let results = people.filter(function(el){
+    if(el.weight === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+    }
+}
+
+function searchOccupation(people){
+  let searchResult = prompt("What is their occupation?");
+  searchResult = searchResult.toLowerCase();
+  let results = people.filter(function(el){
+    if(el.occupation === searchResult){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  people = results;
+  yesNo = prompt("Number of results: " + people.length + "\nDo you want to search another trait to narrow your search?");
+  yesNo = yesNo.toLowerCase();
+    if(yesNo = "yes"){
+      return searchTrait(people);
+    }
+    else if(yesNo = "no"){
+
+    }
+}
+
+
+
+
+// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
+//   alert(personFamily);
+
+
+
+
+//function searchByDescendants(person){
+  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
+  //personDescendants += "Descendants include: " + person[0].parents + "\n";
+  //alert(personDescendants);
+
+//}
+
+
+// function searchByDescendants(person, people){
+//   let personId = ("ID: " + person[0].id);
+//   console.log(personId);
+//   for(let i = 0; i < data.length; i++){
+//   }
+// }
+
+
 // prompt(question).trim();
 
 
@@ -131,76 +312,4 @@ function chars(input){
 //   let foundPerson = people.filter(function(person){
 //     if(person.id === personId 
 
-function findById(personId){
-  let personInfo = ("personId" === foundPerson === people.filter(fuction(person)))
-
-
-function searchTrait(trait){
-  trait = prompt("Which trait would you like to look for?");
-  trait = trait.split(" ");
-    for(let i = 0; i < trait.length; i++){
-      if(trait[i] === trait[0]){
-        trait[i].toLowerCase();
-      }
-      else if(trait[i] !== trait[0]){
-        trait[i] = trait[i][0].toUpperCase() + trait[i].substr(1);
-      }
-    }
-  trait = trait.join("");
-
-  if (trait === "gender"){
-    searchGender(people);
-}
-  else if(trait === "weight"){
-    searchWeight(people);
-}
-}
-
-function searchGender(people){
-  let searchResult = prompt("Do you want to search for male or female?");
-  searchResult.toLowerCase();
-  let results = people.filter(function(el){
-    if(el.gender === searchResult){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-
-  
-
-// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-//   alert(personFamily);
-
-// }
-
-
-//function searchByDescendants(person){
-  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  //personDescendants += "Descendants include: " + person[0].parents + "\n";
-  //alert(personDescendants);
-
-//}
-
-function searchByDescendants(person, people){
-  let personId = ("ID: " + person[0].id);
-  console.log(personId);
-  for(let i = 0; i < data.length; i++){
-  }
-}
-
-
-function searchWeight(people){
-  let searchResult = prompt("weight");
-  let results = people.filter(function(el){
-    if(el.weight == searchResult){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  return results;
-}
 
