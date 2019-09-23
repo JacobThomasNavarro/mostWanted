@@ -7,6 +7,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 function app(people){
   let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
+
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
@@ -37,17 +38,22 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-     displayPerson(person[0]);
+      displayPerson(person[0]);
       // TODO: get person's info
     break;
     case "family":
-    searchByFamily(person[0]);
+      findFamily(person, people);
     break;
     case "descendants":
+
     getDescendants(person);
+
+      searchByDescendants(person);
+      sgetDescedantsTwo(person);
+
     break;
     case "restart":
-    app(people); // restart
+      app(people); // restart
     break;
     case "quit":
     return; // stop execution
@@ -106,8 +112,8 @@ function displayPerson(person){
   personInfo += "Height: " + person.height + "\n"; 
   personInfo += "Weight: " + person.weight + "\n"; 
   personInfo += "Eye Color: " + person.eyeColor + "\n"; 
-  personInfo += "Occupation: " + person.occupation + "\n"; 
-  // TODO: finish getting the rest of the information to display
+  personInfo += "Occupation: " + person.occupation + "\n";
+  // TODO: finish getting the rest of the informaztion to display
   alert(personInfo);
 }
 
@@ -342,6 +348,46 @@ function searchOccupation(people){
   // // TODO: find the person using the name they entered
   // return foundPerson;
 
+function findFamily(person, people){
+  let spouseCheck = person[0].currentSpouse
+  let parentsCheck = person[0].parents;
+  if(person[0].currentSpouse == null || person[0].currentSpouse > 0){
+    findSpouse(person, people);
+  }
+  else if(person[0].parents == null || parentsCheck.length != 0){
+    findParents(person, people);
+  }
+}
 
+function findSpouse(person, people){
+  let spouse = person[0].currentSpouse;
+  let results = people.filter(function(el){
+    if(spouse === el.id){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  spouse = results[0].firstName + " " + results[0].lastName;
+  person[0].currentSpouse = spouse;
+  return findFamily(person, people);
+}
 
+function findParents(person, people){
+  let parents = person[0].parents;
+  for(let i = 0; i < parents.length; i++){
+    let results = people.filter(function(el){
+      if(parents[i] === el.id){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+    parents[i] = results[0].firstName + " " + results[0].lastName;
+  }
+  person[0].parents = parents;
+  return findFamily(person, people);
+}
 
