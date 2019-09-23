@@ -46,6 +46,7 @@ function mainMenu(person, people){
     break;
     case "descendants":
       searchByDescendants(person);
+      sgetDescedantsTwo(person);
     break;
     case "restart":
       app(people); // restart
@@ -119,6 +120,7 @@ function chars(input){
 
 function findById(personId){
   let personInfo = ("personId" === foundPerson === people.filter(fuction(person)));
+  console.log(personInfo);
 }
 
 function searchTrait(people){
@@ -273,6 +275,7 @@ function searchOccupation(people){
     }
 }
 
+
 function findFamily(person, people){
   let spouseCheck = person[0].currentSpouse
   if(spouseCheck != null || spouseCheck.length != 0){
@@ -296,10 +299,21 @@ function findSpouse(person, people){
 }
 
 
+  function getDescedantsTwo (people, person, descendants =[])
+  people.map(function(el));
+  if (el.parents[0] == personId || el.parents [1] == personId)
+    descendants.push(el);
+    getDescendants(people, el, descendants);
+
+// function getDescendants(people, person)
+//   let descendants = people.filter(function(el));
+//     if (el.parents[0] == personId || el.parents [1] == personId)
+//       getDescendants(people,el);
 
 
 // filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
 //   alert(personFamily);
+
 
 
 
@@ -310,14 +324,6 @@ function findSpouse(person, people){
   //alert(personDescendants);
 
 //}
-
-
-// function searchByDescendants(person, people){
-//   let personId = ("ID: " + person[0].id);
-//   console.log(personId);
-//   for(let i = 0; i < data.length; i++){
-//   }
-// }
 
 
 // prompt(question).trim();
@@ -331,4 +337,24 @@ function findSpouse(person, people){
 //   let foundPerson = people.filter(function(person){
 //     if(person.id === personId 
 
+  // let foundDescendants = people.filter(function(person){
+  //   if(person.id === people.id){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // })
+  // // TODO: find the person using the name they entered
+  // return foundPerson;
 
+
+
+function getDescendants(people, person, descendants = []){
+  people.filter(function(el));
+  if(el.parent[0] == person.id || el.parents[1] == person.id)
+    descendants.push(el);
+
+  getDescendants(people, el, descendants);
+
+}
