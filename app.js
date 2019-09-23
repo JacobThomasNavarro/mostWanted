@@ -46,6 +46,7 @@ function mainMenu(person, people){
     break;
     case "descendants":
     getDescendants(people, person);
+
     break;
     case "restart":
     app(people); // restart
@@ -56,6 +57,7 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
+
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
   let lastName = promptFor("What is the person's last name?", chars);
