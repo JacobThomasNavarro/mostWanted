@@ -34,7 +34,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
@@ -45,7 +45,8 @@ function mainMenu(person, people){
       findFamily(person, people);
     break;
     case "descendants":
-    findDescendants(person);
+    getDescendants(people, person);
+
     break;
     case "restart":
       app(people); // restart
@@ -71,7 +72,7 @@ function searchByName(people){
     }
   })
   // TODO: find the person using the name they entered
-  return foundPerson;
+  return foundPerson[0];
 }
 
 // alerts a list of people
@@ -80,7 +81,6 @@ function displayPeople(people){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
 }
-
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
@@ -116,12 +116,10 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
-
 function findById(personId){
   let personInfo = ("personId" === foundPerson === people.filter(fuction(person)));
   console.log(personInfo);
 }
-
 function searchTrait(people){
   let trait = prompt("Which trait would you like to look for?");
   trait = trait.toLowerCase();
@@ -145,7 +143,6 @@ function searchTrait(people){
     searchOccupation(people);
   }
 }
-
 function searchGender(people){
   let searchResult = prompt("Do you want to search for male or female?");
   searchResult = searchResult.toLowerCase();
@@ -166,8 +163,7 @@ function searchGender(people){
     else if(yesNo = "no"){
     }
 }
-
- function searchEyeColor(people){
+function searchEyeColor(people){
   let searchResult = prompt("Enter eye color.");
   searchResult = searchResult.toLowerCase();
   let results = people.filter(function(el){
@@ -187,7 +183,6 @@ function searchGender(people){
     else if(yesNo = "no"){
     }
 }
-
 function searchDOB(people){
   let searchResult = prompt("What is the Date of Birth?");
   searchResult = searchResult.toLowerCase();
@@ -206,10 +201,8 @@ function searchDOB(people){
       return searchTrait(people);
     }
     else if(yesNo = "no"){
-
     }
 }
-
 function searchHeight(people){
   let searchResult = prompt("What is the height in inches?");
   searchResult = parseInt(searchResult, 10)
@@ -230,7 +223,6 @@ function searchHeight(people){
     else if(yesNo = "no"){
     }
 }
-
 function searchWeight(people){
   let searchResult = prompt("What is the weight in pounds?");
   searchResult = parseInt(searchResult, 10)
@@ -251,7 +243,6 @@ function searchWeight(people){
     else if(yesNo = "no"){
     }
 }
-
 function searchOccupation(people){
   let searchResult = prompt("What is their occupation?");
   searchResult = searchResult.toLowerCase();
@@ -270,63 +261,20 @@ function searchOccupation(people){
       return searchTrait(people);
     }
     else if(yesNo = "no"){
-
     }
 }
-
-  // function getDescedantsTwo (people, person, descendants =[])
-  // people.map(function(el));
-  // if (el.parents[0] == personId || el.parents [1] == personId)
-  //   descendants.push(el);
-  //   getDescendants(people, el, descendants);
-
-// function getDescendants(people, person)
-//   let descendants = people.filter(function(el));
-//     if (el.parents[0] == personId || el.parents [1] == personId)
-//       getDescendants(people,el);
-
-
-// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-//   alert(personFamily);
-
-
-
-
-
-//function searchByDescendants(person){
-  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  //personDescendants += "Descendants include: " + person[0].parents + "\n";
-  //alert(personDescendants);
-
-//}
-
-
-// prompt(question).trim();
-
-
-// function searchByFamily(person){
-//   let personFamily = "Family members include: " + person.currentSpouse + "\n" + person.parents +"\n";
-//   alert(personFamily)
-//}
-// function searchByName(people){
-//   let firstName = promptFor("What is the person's first name?", chars);
-//   let lastName = promptFor("What is the person's last name?", chars);
-//   let person = [];
-
-//   let foundPerson = people.filter(function(person){
-//     if(person.id === personId 
-
-  // let foundDescendants = people.filter(function(person){
-  //   if(person.id === people.id){
-  //     return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // })
-  // // TODO: find the person using the name they entered
-  // return foundPerson;
-
+function getDescendants(people, person, descendants =[]){
+  people.map(function(el){
+  if (el.parents[0] == person.id || el.parents [1] == person.id){
+    descendants.push(el);
+    getDescendants(people, el, descendants);
+    return true;
+  }
+  else{
+    return false;
+  }
+});
+}
 function findFamily(person, people){
   let spouseCheck = person[0].currentSpouse
   let parentsCheck = person[0].parents;
@@ -337,7 +285,6 @@ function findFamily(person, people){
     findParents(person, people);
   }
 }
-
 function findSpouse(person, people){
   let spouse = person[0].currentSpouse;
   let results = people.filter(function(el){
@@ -352,7 +299,6 @@ function findSpouse(person, people){
   person[0].currentSpouse = spouse;
   return findFamily(person, people);
 }
-
 function findParents(person, people){
   let parents = person[0].parents;
   for(let i = 0; i < parents.length; i++){
@@ -368,21 +314,4 @@ function findParents(person, people){
   }
   person[0].parents = parents;
   return findFamily(person, people);
-}
-
-function findDescendants(person, people){
-  let parents = person[0].parents;
-  for(let i = 0; i < parents.length; i++){
-    let results = people.filter(function(el){
-      if(parents[i] === el.id){
-        return true;
-      }
-      else{
-        return false;
-      }
-    });
-    parents[i] = results[0].firstName + " " + results[0].lastName;
-  }
-  person[0].parents = parents;
-  return findDescendants(person, people);
 }
