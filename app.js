@@ -42,14 +42,14 @@ function mainMenu(person, people){
       // TODO: get person's info
     break;
     case "family":
-      findFamily(person, people);
+    findFamily(person, people);
     break;
     case "descendants":
     let descendantsResults = getDescendants(people, person);
     displayDescendants(descendantsResults);
     break;
     case "restart":
-      app(people); // restart
+    app(people); // restart
     break;
     case "quit":
     return; // stop execution
@@ -102,7 +102,6 @@ function promptFor(question, valid){
     var response = prompt(question).trim();
 
   }
-
   while(!response || !valid(response));
   return response;
 }
@@ -276,17 +275,19 @@ function getDescendants(people, person, descendants =[]){
   return descendants;
 }
 function findFamily(person, people){
-  let spouseCheck = person[0].currentSpouse
-  let parentsCheck = person[0].parents;
-  if(person[0].currentSpouse == null || person[0].currentSpouse > 0){
-    findSpouse(person, people);
+  let spouseCheck = person.currentSpouse
+  let parentsCheck = person.parents;
+  let Spouse;
+  if(person.currentSpouse != null){
+   Spouse =findSpouse(person, people);
   }
-  else if(person[0].parents == null || parentsCheck.length != 0){
+  else if(person.parents != null){
     findParents(person, people);
   }
+  console.log(Spouse)
 }
 function findSpouse(person, people){
-  let spouse = person[0].currentSpouse;
+  let spouse = person.currentSpouse;
   let results = people.filter(function(el){
     if(spouse === el.id){
       return true;
@@ -295,12 +296,12 @@ function findSpouse(person, people){
       return false;
     }
   });
-  spouse = results[0].firstName + " " + results[0].lastName;
-  person[0].currentSpouse = spouse;
-  return findFamily(person, people);
+  // spouse = results[0].firstName + " " + results[0].lastName;
+  // person.currentSpouse = spouse;
+  return results;
 }
 function findParents(person, people){
-  let parents = person[0].parents;
+  let parents = person.parents;
   for(let i = 0; i < parents.length; i++){
     let results = people.filter(function(el){
       if(parents[i] === el.id){
