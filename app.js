@@ -118,6 +118,7 @@ function chars(input){
 
 function findById(personId){
   let personInfo = ("personId" === foundPerson === people.filter(fuction(person)));
+  console.log(personInfo);
 }
 
 function searchTrait(people){
@@ -289,14 +290,6 @@ function searchOccupation(people){
 //}
 
 
-// function searchByDescendants(person, people){
-//   let personId = ("ID: " + person[0].id);
-//   console.log(personId);
-//   for(let i = 0; i < data.length; i++){
-//   }
-// }
-
-
 // prompt(question).trim();
 
 
@@ -312,4 +305,24 @@ function searchOccupation(people){
 //   let foundPerson = people.filter(function(person){
 //     if(person.id === personId 
 
+  // let foundDescendants = people.filter(function(person){
+  //   if(person.id === people.id){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // })
+  // // TODO: find the person using the name they entered
+  // return foundPerson;
 
+
+
+function getDescendants(people, person, descendants = []){
+  people.filter(function(el));
+  if(el.parent[0] == person.id || el.parents[1] == person.id)
+    descendants.push(el);
+
+  getDescendants(people, el, descendants);
+
+}
