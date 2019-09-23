@@ -44,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person[0]);
     break;
     case "descendants":
-    sgetDescedantsTwo(person);
+    getDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -54,6 +54,22 @@ function mainMenu(person, people){
     default:
     return mainMenu(person, people); // ask again
   }
+}
+
+function getDescendants(people, person, descendants = []){
+  let foundDescendants = people.filter(function(el){
+  if(el.parents[0] == person.id || el.parents[1] == person.id){
+    descendants.push(el);
+    getDescendants(people, el, descendants);
+    return true;
+  }
+  else{
+    return false;
+  }
+});
+
+  return foundDescendants;
+
 }
 
 function searchByName(people){
@@ -273,11 +289,11 @@ function searchOccupation(people){
     }
 }
 
-  function getDescedantsTwo (people, person, descendants =[])
-  people.map(function(el));
-  if (el.parents[0] == personId || el.parents [1] == personId)
-    descendants.push(el);
-    getDescendants(people, el, descendants);
+  // function getDescedantsTwo (people, person, descendants =[])
+  // people.map(function(el));
+  // if (el.parents[0] == personId || el.parents [1] == personId)
+  //   descendants.push(el);
+  //   getDescendants(people, el, descendants);
 
 // function getDescendants(people, person)
 //   let descendants = people.filter(function(el));
@@ -328,11 +344,4 @@ function searchOccupation(people){
 
 
 
-function getDescendants(people, person, descendants = []){
-  people.filter(function(el));
-  if(el.parent[0] == person.id || el.parents[1] == person.id)
-    descendants.push(el);
 
-  getDescendants(people, el, descendants);
-
-}
