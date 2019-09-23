@@ -277,12 +277,12 @@ function searchOccupation(people){
 
 
 function findFamily(person, people){
-  let spouseCheck = person[0].currentSpouse;
+  let spouseCheck = person[0].currentSpouse
   let parentsCheck = person[0].parents;
-  if(spouseCheck != null && spouseCheck.length != 0){
+  if(person[0].currentSpouse == null || person[0].currentSpouse > 0){
     findSpouse(person, people);
   }
-  else if(parents == null || parentsCheck.length != 0){
+  else if(person[0].parents == null || parentsCheck.length != 0){
     findParents(person, people);
   }
 }
@@ -304,7 +304,7 @@ function findSpouse(person, people){
 
 function findParents(person, people){
   let parents = person[0].parents;
-  for(i = 0; i < parents.length; i++){
+  for(let i = 0; i < parents.length; i++){
     let results = people.filter(function(el){
       if(parents[i] === el.id){
         return true;
