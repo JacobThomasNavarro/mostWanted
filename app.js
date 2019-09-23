@@ -44,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person[0]);
     break;
     case "descendants":
-    searchByDescendants(person);
+    sgetDescedantsTwo(person);
     break;
     case "restart":
     app(people); // restart
@@ -272,44 +272,20 @@ function searchOccupation(people){
     }
 }
 
+  function getDescedantsTwo (people, person, descendants =[])
+  people.map(function(el));
+  if (el.parents[0] == personId || el.parents [1] == personId)
+    descendants.push(el);
+    getDescendants(people, el, descendants);
 
+// function getDescendants(people, person)
+//   let descendants = people.filter(function(el));
+//     if (el.parents[0] == personId || el.parents [1] == personId)
+//       getDescendants(people,el);
 
 
 // filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
 //   alert(personFamily);
 
-
-
-
-//function searchByDescendants(person){
-  //let personDescendants = "Descendants include: " + person[0].parents + "\n";
-  //personDescendants += "Descendants include: " + person[0].parents + "\n";
-  //alert(personDescendants);
-
-//}
-
-
-// function searchByDescendants(person, people){
-//   let personId = ("ID: " + person[0].id);
-//   console.log(personId);
-//   for(let i = 0; i < data.length; i++){
-//   }
-// }
-
-
-// prompt(question).trim();
-
-
-// function searchByFamily(person){
-//   let personFamily = "Family members include: " + person.currentSpouse + "\n" + person.parents +"\n";
-//   alert(personFamily)
-//}
-// function searchByName(people){
-//   let firstName = promptFor("What is the person's first name?", chars);
-//   let lastName = promptFor("What is the person's last name?", chars);
-//   let person = [];
-
-//   let foundPerson = people.filter(function(person){
-//     if(person.id === personId 
 
 
