@@ -45,8 +45,8 @@ function mainMenu(person, people){
       findFamily(person, people);
     break;
     case "descendants":
-    getDescendants(people, person);
-
+    let descendantsResults = getDescendants(people, person);
+    displayDescendants(descendantsResults);
     break;
     case "restart":
       app(people); // restart
@@ -265,15 +265,15 @@ function searchOccupation(people){
 }
 function getDescendants(people, person, descendants =[]){
   people.map(function(el){
-  if (el.parents[0] == person.id || el.parents [1] == person.id){
+  if (el.parents[0] == person.id || el.parents[1] == person.id){
     descendants.push(el);
     getDescendants(people, el, descendants);
-    return true;
   }
   else{
     return false;
   }
 });
+  return descendants;
 }
 function findFamily(person, people){
   let spouseCheck = person[0].currentSpouse
@@ -314,4 +314,12 @@ function findParents(person, people){
   }
   person[0].parents = parents;
   return findFamily(person, people);
+}
+
+function displayDescendants(descendantsResults){
+  console.log("Descendants: ");
+  for(let i = 0; i < descendantsResults.length; i++){
+    displayPerson(descendantsResults[i]);
+  }
+  alert(displayResults);
 }
