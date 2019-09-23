@@ -7,6 +7,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 function app(people){
   let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
+
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
@@ -37,17 +38,17 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-     displayPerson(person[0]);
+      displayPerson(person[0]);
       // TODO: get person's info
     break;
     case "family":
-    searchByFamily(person[0]);
+      findFamily(person, people);
     break;
     case "descendants":
-    searchByDescendants(person);
+      searchByDescendants(person);
     break;
     case "restart":
-    app(people); // restart
+      app(people); // restart
     break;
     case "quit":
     return; // stop execution
@@ -90,8 +91,8 @@ function displayPerson(person){
   personInfo += "Height: " + person.height + "\n"; 
   personInfo += "Weight: " + person.weight + "\n"; 
   personInfo += "Eye Color: " + person.eyeColor + "\n"; 
-  personInfo += "Occupation: " + person.occupation + "\n"; 
-  // TODO: finish getting the rest of the information to display
+  personInfo += "Occupation: " + person.occupation + "\n";
+  // TODO: finish getting the rest of the informaztion to display
   alert(personInfo);
 }
 
@@ -272,6 +273,28 @@ function searchOccupation(people){
     }
 }
 
+function findFamily(person, people){
+  let spouseCheck = person[0].currentSpouse
+  if(spouseCheck != null || spouseCheck.length != 0){
+    findSpouse(person, people);
+  }
+}
+
+function findSpouse(person, people){
+  let spouse = person[0].currentSpouse;
+  let results = people.filter(function(el){
+    if(spouse === el.id){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  spouse = results[0].firstName + " " + results[0].lastName;
+  person[0].currentSpouse = spouse;
+  return findFamily(person, people);
+}
+
 
 
 
@@ -300,10 +323,6 @@ function searchOccupation(people){
 // prompt(question).trim();
 
 
-// function searchByFamily(person){
-//   let personFamily = "Family members include: " + person.currentSpouse + "\n" + person.parents +"\n";
-//   alert(personFamily)
-//}
 // function searchByName(people){
 //   let firstName = promptFor("What is the person's first name?", chars);
 //   let lastName = promptFor("What is the person's last name?", chars);
