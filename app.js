@@ -33,7 +33,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
@@ -44,7 +44,7 @@ function mainMenu(person, people){
     searchByFamily(person[0]);
     break;
     case "descendants":
-    sgetDescedantsTwo(person);
+    getDescendants(people, person);
     break;
     case "restart":
     app(people); // restart
@@ -70,7 +70,7 @@ function searchByName(people){
     }
   })
   // TODO: find the person using the name they entered
-  return foundPerson;
+  return foundPerson[0];
 }
 
 // alerts a list of people
@@ -271,21 +271,15 @@ function searchOccupation(people){
 
     }
 }
-
-  function getDescedantsTwo (people, person, descendants =[])
-  people.map(function(el));
-  if (el.parents[0] == personId || el.parents [1] == personId)
+function getDescendants(people, person, descendants =[]){
+  people.map(function(el){
+  if (el.parents[0] == person.id || el.parents [1] == person.id){
     descendants.push(el);
     getDescendants(people, el, descendants);
-
-// function getDescendants(people, person)
-//   let descendants = people.filter(function(el));
-//     if (el.parents[0] == personId || el.parents [1] == personId)
-//       getDescendants(people,el);
-
-
-// filter(function(el)) { personFamily = "Family members include: " + person[0].currentSpouse + "\n" + person[0].parents[0];
-//   alert(personFamily);
-
-
-
+    return true;
+  }
+  else{
+    return false;
+  }
+});
+}
