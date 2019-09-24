@@ -282,17 +282,19 @@ function displayDescendants(descendantsResults){
 }
 
 function findFamily(person, people){
-  let spouseCheck = person.currentSpouse
+  let spouseCheck = person.currentSpouse;
   let parentsCheck = person.parents;
-  let Spouse;
-  if(person.currentSpouse != null){
-   Spouse =findSpouse(person, people);
+  if(person.currentSpouse !== null && typeof person.currentSpouse == typeof 0){
+    findSpouse(person, people);
   }
-  else if(person.parents != null){
+  else if(person.parents !== null && typeof person.parents[1] == typeof 0){
     findParents(person, people);
   }
-  console.log(Spouse)
+  else{
+    alert("END")
+  }
 }
+
 function findSpouse(person, people){
   let spouse = person.currentSpouse;
   let results = people.filter(function(el){
@@ -303,10 +305,11 @@ function findSpouse(person, people){
       return false;
     }
   });
-  // spouse = results[0].firstName + " " + results[0].lastName;
-  // person.currentSpouse = spouse;
-  return results;
+  spouse = results[0].firstName + " " + results[0].lastName;
+  person.currentSpouse = spouse;
+  return findFamily(person, people);
 }
+
 function findParents(person, people){
   let parents = person.parents;
   for(let i = 0; i < parents.length; i++){
@@ -320,7 +323,7 @@ function findParents(person, people){
     });
     parents[i] = results[0].firstName + " " + results[0].lastName;
   }
-  person[0].parents = parents;
+  person.parents = parents;
   return findFamily(person, people);
 }
 
