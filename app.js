@@ -287,6 +287,7 @@ function findFamily(person, people){
     alert("END")
   }
 }
+
 function findSpouse(person, people){
   let spouse = person.currentSpouse;
   let results = people.filter(function(el){
@@ -299,7 +300,7 @@ function findSpouse(person, people){
   });
   spouse = results[0].firstName + " " + results[0].lastName;
   person.currentSpouse = spouse;
-  return results;
+  return findFamily(person, people);
 }
 function findParents(person, people){
   let parents = person.parents;
