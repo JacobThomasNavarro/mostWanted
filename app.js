@@ -277,13 +277,16 @@ function searchOccupation(people){
 
 
 function findFamily(person, people){
-  let spouseCheck = person[0].currentSpouse
+  let spouseCheck = person[0].currentSpouse;
   let parentsCheck = person[0].parents;
   if(person[0].currentSpouse == null || person[0].currentSpouse > 0){
     findSpouse(person, people);
   }
-  else if(person[0].parents == null || parentsCheck.length != 0){
+  else if(parentsCheck.length != 0){
     findParents(person, people);
+  }
+  else{
+    alert("END")
   }
 }
 
