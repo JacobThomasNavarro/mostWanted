@@ -42,8 +42,8 @@ function mainMenu(person, people){
       // TODO: get person's info
     break;
     case "family":
-    person.children = "init";
-    person.siblings = "init";
+    person.children = "no family";
+    person.siblings = "no family";
     findFamily(person, people);
     break;
     case "descendants":
@@ -294,7 +294,12 @@ function findFamily(person, people){
     findParents(person, people);
   }
   else{
-    alert("END")
+    let family = "Family Members Found:\n"
+    family += "Current Spouse: " + person.currentSpouse + "\n";
+    family += "Children: " + person.children + "\n";
+    family += "Parents: " + person.parents + "\n";
+    family += "Siblings: " +person.siblings + "\n";
+    alert(family)
   }
 }
 
