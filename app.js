@@ -274,6 +274,13 @@ function getDescendants(people, person, descendants =[]){
 });
   return descendants;
 }
+
+function displayDescendants(descendantsResults){
+  for(let i = 0; i < descendantsResults.length; i++){
+    displayPerson(descendantsResults[i]);
+  }
+}
+
 function findFamily(person, people){
   let spouseCheck = person.currentSpouse
   let parentsCheck = person.parents;
@@ -317,10 +324,3 @@ function findParents(person, people){
   return findFamily(person, people);
 }
 
-function displayDescendants(descendantsResults){
-  console.log("Descendants: ");
-  for(let i = 0; i < descendantsResults.length; i++){
-    displayPerson(descendantsResults[i]);
-  }
-  alert(displayResults);
-}
