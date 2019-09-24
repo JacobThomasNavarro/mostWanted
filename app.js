@@ -43,6 +43,7 @@ function mainMenu(person, people){
     break;
     case "family":
     person.children = "init";
+    person.siblings = "init";
     findFamily(person, people);
     break;
     case "descendants":
@@ -279,21 +280,22 @@ function findFamily(person, people){
   let spouseCheck = person.currentSpouse;
   let parentsCheck = person.parents;
   let childrenCheck = person.children;
+  let siblingsCheck = person.siblings;
   if(person.currentSpouse !== null && typeof person.currentSpouse === typeof 0){
     findSpouse(person, people);
-  }
-  else if(person.parents !== null && typeof person.parents[1] === typeof 0){
-    findParents(person, people);
   }
   else if(person.children !== null && typeof person.children !== typeof []){
     findChildren(person, people);
   }
-  else{
-    ALERT("END")
+  else if(parentsCheck.length > 1 && typeof person.siblings !== typeof []){
+    findSiblings(person, people);
   }
-  // else if(){
-  //   // findSiblings(person, people)
-  // }
+  else if(person.parents !== null && typeof person.parents[1] === typeof 0){
+    findParents(person, people);
+  }
+  else{
+    alert("END")
+  }
 }
 
 function findSpouse(person, people){
@@ -329,7 +331,7 @@ function findParents(person, people){
 }
 
 function findChildren(person, people){
-  person.children = []
+  person.children = [];
   let children = person.children;
   let results = people.filter(function(el){
     if(el.parents[0] === person.id || el.parents[1] === person.id){
@@ -343,6 +345,24 @@ function findChildren(person, people){
     children[i] = results[i].firstName + " " + results[i].lastName;
   }
   person.children = children;
+  return findFamily(person, people);
+}
+
+function findSiblings(person, people){
+  person.siblings = [];
+  let siblings = person.siblings;
+  let results = people.filter(function(el){
+    if(el.parents[0] === person.parents[0] || el.parents[1] === person.parents[1]){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+  for(let i = 0; i < results.length; i++){
+    siblings[i] = results[i].firstName + " " + results[i].lastName;
+  }
+  person.siblings = siblings;
   return findFamily(person, people);
 }
 
