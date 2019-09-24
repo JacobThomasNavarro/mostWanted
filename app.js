@@ -275,12 +275,12 @@ function getDescendants(people, person, descendants =[]){
   return descendants;
 }
 function findFamily(person, people){
-  let spouseCheck = person[0].currentSpouse;
-  let parentsCheck = person[0].parents;
-  if(person[0].currentSpouse == null || person[0].currentSpouse > 0){
+  let spouseCheck = person.currentSpouse;
+  let parentsCheck = person.parents;
+  if(person.currentSpouse !== null && typeof person.currentSpouse == typeof 0){
     findSpouse(person, people);
   }
-  else if(parentsCheck.length != 0){
+  else if(person.parents !== null && typeof person.parents[1] == typeof 0){
     findParents(person, people);
   }
   else{
@@ -302,6 +302,7 @@ function findSpouse(person, people){
   person.currentSpouse = spouse;
   return findFamily(person, people);
 }
+
 function findParents(person, people){
   let parents = person.parents;
   for(let i = 0; i < parents.length; i++){
@@ -315,7 +316,7 @@ function findParents(person, people){
     });
     parents[i] = results[0].firstName + " " + results[0].lastName;
   }
-  person[0].parents = parents;
+  person.parents = parents;
   return findFamily(person, people);
 }
 
