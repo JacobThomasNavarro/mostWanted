@@ -42,7 +42,7 @@ function mainMenu(person, people){
       // TODO: get person's info
     break;
     case "family":
-    person.children = [];
+    person.children = "init";
     findFamily(person, people);
     break;
     case "descendants":
@@ -279,14 +279,17 @@ function findFamily(person, people){
   let spouseCheck = person.currentSpouse;
   let parentsCheck = person.parents;
   let childrenCheck = person.children;
-  if(person.currentSpouse !== null && typeof person.currentSpouse == typeof 0){
+  if(person.currentSpouse !== null && typeof person.currentSpouse === typeof 0){
     findSpouse(person, people);
   }
-  else if(person.parents !== null && typeof person.parents[1] == typeof 0){
+  else if(person.parents !== null && typeof person.parents[1] === typeof 0){
     findParents(person, people);
   }
-  else if(person.children !== null){
+  else if(person.children !== null && typeof person.children !== typeof []){
     findChildren(person, people);
+  }
+  else{
+    ALERT("END")
   }
   // else if(){
   //   // findSiblings(person, people)
@@ -326,6 +329,7 @@ function findParents(person, people){
 }
 
 function findChildren(person, people){
+  person.children = []
   let children = person.children;
   let results = people.filter(function(el){
     if(el.parents[0] === person.id || el.parents[1] === person.id){
